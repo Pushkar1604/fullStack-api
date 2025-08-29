@@ -7,6 +7,17 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "Full Stack API is running!",
+    endpoints: {
+      GET: "/bfhl",
+      POST: "/bfhl"
+    },
+    usage: "Send POST request to /bfhl with JSON body: { data: [] }"
+  });
+});
+
 
 const isNumber = (str) => !isNaN(str) && str.trim() !== '' && !isNaN(parseFloat(str));
 const isAlphabet = (char) => /^[a-zA-Z]$/.test(char);
